@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+          x值为 {{x}} <br>
+          y值为 {{y}}
+    </div>
+    
+        <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+        <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+        <script>
+           var app = new Vue({
+               el:"#app",
+               data() {
+                   return {
+                       message:"Hello World",
+                       x:100,
+                       y:10,
+                   }
+               },
+           })   
+           
+        //    wach监听数据
+        app.$watch('x',function(){
+             alert("x值发生了变化");
+             this.y = this.x +10
+        })
+
+        document.onclick = function(){
+            app.x = 80
+        }
+
+
+        </script>
+</body>
+</html>

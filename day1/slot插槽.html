@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>slot插槽</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <ul id="ul">
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+        </ul>
+        <!-- 自定义组件 -->
+        <stark>
+            <ul id="ul">
+                <li>2</li>
+                <li>2</li>
+                <li>2</li>
+            </ul>
+        </stark>
+    </div>
+
+    <template id="aaa">
+        <div>
+            <h1>你好呀</h1>
+            <!-- 插槽 -->
+            <slot id="ul">
+
+            </slot>
+        </div>
+    </template>
+
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            components: {
+                "stark": {
+                    template: "#aaa"
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

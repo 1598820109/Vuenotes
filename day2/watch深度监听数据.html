@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>watch深度监听</title>
+</head>
+<body>
+	
+	<div id="app">
+		
+		{{message}}
+
+		<br />
+		
+		<h1>
+			{{Object.name}}
+		</h1>
+
+		
+	</div>
+     <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+     <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+	 <script type="text/javascript">
+	    var app = new Vue({
+	    	 el:"#app",
+	    	 data:{
+	    	 	message:"深度监听数据",
+	    	 	x:100,
+	    	 	y:200,
+	    	 	Object:{
+	    	 		name:"小红",
+	    	 		age:14,
+	    	 	}
+	    	 }
+	    })
+	    
+	    //watch 深度监听数据
+		app.$watch('Object',function(){
+			//因为是一个对象，不弹窗 得传deep参数
+			alert(this.Object.name)
+
+		},{
+			//深度监听对象
+		   deep:true
+		})
+		
+		document.onclick = function(){
+			this.x = 111;
+			//this指向app实列
+			app.Object.name = "小明"
+		}
+	 	
+	 </script>	
+
+	
+</body>
+</html>

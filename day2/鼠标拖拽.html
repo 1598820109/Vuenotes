@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>鼠标拖拽</title>
+	</head>
+	
+	<style>
+		 .left{
+		 	width: 200px;
+		 	height: 200px;
+			background-color: red;
+			position: absolute;
+			left:0;
+		 }
+		 
+		  .right{
+		 	width: 200px;
+		 	height: 200px;
+			background-color: blue;
+			position: absolute;
+			right:0;
+		 }
+		 
+		 body{
+		 	overflow: hidden;
+		 	box-sizing: border-box;
+		 }
+	</style>
+	<body>
+		<div id="app">
+			
+			<div class="left" v-drag></div>
+			<div class="right" v-drag></div>
+			
+		</div>
+		
+	    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+		<script >
+			
+			Vue.directive('drag',function(el){
+				//鼠标按下
+				el.onmousedown = function(e){
+					var e = event || window.event;
+				    var x = e.pageX - el.offsetLeft;
+					var y = e.pageY - el.offsetTop;
+					
+					//鼠标移动
+					document.onmousemove = function(e){
+						var X = e.clientX - x;
+						var Y = e.clientY - y;
+						
+						el.style.left = X +"px";
+						el.style.top = Y +"px";
+					}
+				}
+				
+				
+				el.onmouseup = function(){
+					document.onmousemove = null;
+				}
+							
+			})
+			
+			var app = new Vue({
+				el:"#app",
+				data:{
+					
+				},
+				
+				
+				
+				
+			})
+			
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>请求GitHub api</title>
+		<style type="text/css">
+			 img{
+			 	width: 30px;
+			 	height: 30px;
+			 	border-radius: 15px;
+		 	    position: relative;
+			    left: 20px;
+			    top: 7px;
+			 }
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			
+			<input type="text"  v-model="uid" />
+			
+			<input type="button"  @click="getHub(uid)" value="点击获取github用户信息" />
+			
+			<br />
+			用户 ID:{{user.id}}
+			<br />
+			用户头像:<img :src="user.avatar_url"/>
+		</div>
+		
+		<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+		<script src="https://cdn.bootcss.com/vue/2.6.9/vue.min.js"></script>
+		<!--引入vue-resource -->
+		<script src="https://cdn.bootcss.com/vue-resource/1.5.0/vue-resource.min.js"></script>
+		
+		<script >
+			var app  = new Vue({
+				el:"#app",
+				data:{
+					user:{},
+					uid:'',
+				},
+			
+				methods:{
+					//传参
+					getHub:function(uid){
+						//get请求 github api
+						this.$http.get(`https://api.github.com/users/${uid}`).then(res =>{
+							console.log(res);
+							this.user = res.data
+						})
+					}
+				}
+			
+			})
+			
+		</script>
+	
+	</body>
+</html>

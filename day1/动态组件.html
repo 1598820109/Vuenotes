@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动态组件</title>
+</head>
+<body>
+
+    <div id="app">
+        
+        <h1>{{message}}</h1>
+
+        <input type="button" @click ="stark = 'Hello'" value="Hello组件">
+        <input type="button" @click ="stark = 'World'" value="World组件">
+
+          <component :is="stark">
+          
+          </component>
+    </div>
+
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <script>
+     var app = new Vue({
+         el:"#app",
+         data() {
+             return {
+                 message:"动态组件",
+                 stark:'Hello',
+             }
+         },
+
+        components:{
+            'Hello':{
+                template:"<h1>我是Hello组件</h1>"
+            },
+
+            'World':{
+                template:"<h1>我是World组件</h1>"
+            }
+        },
+     })
+    
+    
+    </script>
+</body>
+</html>

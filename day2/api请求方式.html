@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>api的请求方式</title>
+		<style type="text/css">
+			 input{
+			 	width: 880px;
+			 	height: 40px;
+			 	border: 1px solid black;
+			 	position: relative;
+			 	margin: auto;
+			 }
+			 
+			 ul li{
+			 	font-size: 18px;
+			 	list-style: none;
+			 }
+		</style>
+	</head>
+
+	<body>
+
+		<div id="app">
+			<h1>
+				{{message}}
+			</h1>
+			<br/>
+			<input type="text" name="wd" id="wd" v-model="word" @keyup="get()" />
+			<br />
+
+			<ul>
+				<li v-for="item in myData">
+					{{ item }}
+				</li>
+			</ul>
+
+		</div>
+		<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+		<script src="https://cdn.bootcss.com/vue/2.6.9/vue.min.js"></script>
+		<!--引入vue-resource -->
+		<script src="https://cdn.bootcss.com/vue-resource/1.5.0/vue-resource.min.js"></script>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: "#app",
+				data: {
+					message: "api的请求方式",
+					word: '',
+					myData: [],
+				},
+
+				//方法
+				methods: {
+					get: function() {
+						this.$http.jsonp("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su", {
+							//参数
+							params: {
+								wd: this.word,
+							},
+							jsonp: "cb"
+						}).then(function(res) {
+							this.myData = res.data.s
+						})
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>

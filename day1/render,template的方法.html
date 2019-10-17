@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> render </title>
+</head>
+<body>
+
+    <div id="app">
+             <h1>{{message}}</h1>
+    </div>
+
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+
+    <script>
+    </script>
+         
+
+    <script>
+
+        var app = new Vue({
+            el:"#app",
+            data() {
+                return {
+                    message:"render template",
+                }
+            },
+
+            render(createElement){
+                return createElement(
+                     "ul",[
+                         createElement("li",1),
+                         createElement("li",2),
+                         createElement("li",3),
+                         createElement("li",4),
+                     ]
+                )
+            }
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+.IndexList {
+  margin-top: 30px;
+}
+
+.IndexList .H_card {
+  width: 320px;
+  height: 370px;
+}
+
+.shopTitle {
+  width: 230px;
+  height: 40px;
+  margin: auto;
+  margin-top: 17px;
+  color: black;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.IndexList:hover .shopTitle{
+    transition: all 0.3s;
+    color: red;
+}
+
+.IndexList .shopImg{
+  width: 160px;
+  height: 160px;
+}
+
+.IndexList .outline{
+  display: inline-block;
+  position: absolute;
+  top: 17px;
+  right:8px;
+  font-size: 13px;
+  color:#19be6b;
+}
+
+.IndexList h3{
+  transition: all 0.3s;
+  font-size: 18px;
+  margin: 18px 0px;
+  color: red;
+}
+
+.IndexList .bot{
+    position: absolute;
+    bottom:30px;
+    left:120px;
+}
+
+.ivu-card:hover {
+  box-shadow: 4px 4px 14px #d3cfcf;;
+  border-color:#dad2d2;
+}
+.fixed_nav{
+  position: fixed;
+  width:100%;
+  top:63px;
+}

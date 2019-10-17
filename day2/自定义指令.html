@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>自定义指令</title>
+		<style type="text/css">
+			
+			.white{
+				width: 400px;
+				height: 400px;
+				background-color: blue;
+				position: relative;
+				margin: auto;
+			}			
+
+			
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			{{message}}
+			
+			<div class="white" v-stark>
+				
+			</div>
+		</div>
+		
+		<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+        <script src="https://cdn.bootcss.com/vue/2.6.9/vue.min.js"></script>
+		<script>
+			
+			//自定义指令 directive
+			Vue.directive('stark',{
+				bind:function(el,bing){
+					el.style.backgroundColor = "black";
+				}
+			})
+			
+			var app = new Vue({
+				el:'#app',
+				data:{
+					message:"自定义指令"
+				}
+			})
+			
+		</script>
+	
+	</body>
+</html>

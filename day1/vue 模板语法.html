@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js 模板语法</title>
+    <style>
+        .color {
+            background-color: black;
+            color: white;
+            font-size: 20px;
+            height: 40px;
+            width: 200px;
+            text-align: center;
+            line-height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <h1>
+            {{message}} <br>
+            <h2 v-html="title"></h2><br>
+        </h1>
+
+        <label for="r1">修改颜色</label><input type="checkbox" v-model="Boolean" id="r1" style="width:20px;height:20px;">
+        <br>
+        <br>
+
+        <!-- 更改样式属性 v-bind-->
+        <div v-bind:class="{'color':Boolean}">
+            你好
+        </div>
+
+        <!-- 更改HTML标签属性 v-bind-->
+        <a v-bind:href="url">
+            点击百度
+        </a>
+
+        <!-- 判断是否插入数据 -->
+        <p v-if="ok">
+            你可以看见我把
+        </p>
+
+        <p v-if="no">
+            你看不见我
+        </p>
+
+
+        <!-- 数据双向绑定 v-model-->
+        <h1>{{message}}</h1>
+        <input v-model="message" type="text" />
+
+        <!--  v-on 指令，它用于监听 DOM 事件： -->
+        <button v-on:click="reClick()">
+            点击发送
+        </button>
+
+        <!-- v-for 可以绑定数据到数组来渲染一个列表： -->
+        <ul>
+            <li v-for="Array in Arrays">
+                {{ Array }}
+            </li>
+        </ul>
+
+        <br>
+        <!-- 有序列表 -->
+        <ol style="list-style:none;">
+            <li v-for="number in 100">
+                {{number}}
+            </li>
+        </ol>
+
+
+        <button @click="oClick">点击 </button>
+
+        <div v-show="click" style="width:100px;height:100px;background: red;top:10;">
+
+        </div>
+
+        <h1 v-show="false">Hello!</h1>
+
+    </div>
+    <!-- 
+        使用 v-html 指令用于输出 html 代码：
+        HTML 属性中的值应使用 v-bind 指令。
+     -->
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    message: "Hello World",
+                    title: "<h1>你好,世界</h1>",
+                    Boolean: false,
+                    ok: true,
+                    no: false,
+                    url: 'https://www.baidu.com',
+                    Arrays: {
+                        name: "小明",
+                        sex: "男",
+                        age: 18,
+                        hobby: "打篮球"
+                    },
+                    click: true,
+                }
+            },
+
+            methods: {
+                reClick: function () {
+                    alert(this.message)
+                    alert("发送成功")
+                },
+
+                oClick() {
+                    this.click = !this.click;
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

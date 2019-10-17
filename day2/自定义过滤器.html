@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>自定义过滤器</title>
+	</head>
+	<body>
+		
+		<div id="app">
+
+			<h1>
+				{{message}}
+			</h1>
+
+			<br />
+			<h1>
+				{{stark | Hello}}
+			</h1>
+
+		</div>
+		
+		<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+        <script src="https://cdn.bootcss.com/vue/2.6.9/vue.min.js"></script>
+		<script>
+			//过滤器  filter
+		 	Vue.filter('Hello',function(val){
+				return val < 10?'0'+val:val
+			})
+			
+			var app = new Vue({
+				el:"#app",
+				data:{
+					message:"自定义过滤器",
+					stark:18,
+				},
+			})
+			
+		
+			
+		</script>
+		
+	</body>
+</html>

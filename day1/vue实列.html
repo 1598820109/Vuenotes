@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue实列</title>
+</head>
+
+<body>
+    <div id="app">
+
+        <h1>
+                {{ message }}
+                <br>
+                {{ name }}
+        </h1>
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好 世界！',
+                name:'曾敖'
+            }
+        })
+
+        // 更改data数据
+        //app.message = "对不起"
+
+    </script>
+</body>
+
+</html>

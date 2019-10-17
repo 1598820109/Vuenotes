@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue生命周期</title>
+</head>
+
+<body>
+
+    <div id="app">
+        {{message}}
+
+        <button id="click"> 点击触发 </button>
+        <button onclick="update()"> 更新数据 </button>
+        <button onclick="destroy()"> 销毁数据 </button>
+    </div>
+    <!-- 
+        生命周期
+        
+        1.幼年
+        2.少年
+        3.成年
+        4.中年
+        5.老年
+        可以理解为 这要的一个过程
+    -->
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    message: 'hello world',
+                }
+            },
+
+            //初始化前 
+            beforeCreate() {
+                console.log("初始化 事件 生命周期")
+                alert("实列初始化前")
+            },
+
+            // 初始化后
+            created() {
+                console.log("实列初始化注入")
+                alert("实列初始完毕")
+
+            },
+
+            // 挂载前
+            beforeMount() {
+                console.log("实列挂载前")
+                alert("实列挂载前")
+            },
+
+            // 挂载后
+            mounted() {
+                console.log("实列挂载完毕")
+                alert("实列挂载完毕");
+
+                $("#click").click(function () {
+                    alert("我触发了click事件");
+                })
+            },
+
+            // 更新前
+            beforeUpdate() {
+                console.log("数据跟新前")
+                alert("实列更新前")
+            },
+
+            // 更新完毕
+            updated() {
+                console.log("数据更新完毕")
+                alert("更新完毕")
+            },
+
+            //数据销毁前
+            beforeDestroy() {
+                console.log("数据摧毁前")
+                alert("数据摧毁前")
+            },
+
+            // 数据以销毁
+            destroyed() {
+                console.log("数据摧毁完毕")
+                alert("数据摧毁完毕")
+
+            }
+        })
+
+        //数据更新
+        function update() {
+            app.message = "你好,世界！"
+        }
+
+        //  数据销毁
+        function destroy() {
+            app.$destroy();
+        }
+    </script>
+
+</body>
+
+</html>

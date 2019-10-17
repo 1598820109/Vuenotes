@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>slot规定指定位置</title>
+</head>
+
+<body>
+
+
+    <div id="app">
+        <stark>
+            <div slot="three">
+                我想替换第三个位置
+            </div>
+
+        </stark>
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+    <script>
+        Vue.component("stark", {
+            template: `
+            <div>
+              <slot name="one"><h1> 我是第一位置 </h1></slot>
+              <slot name="two"><h1> 我是第二位置 </h1></slot>
+              <slot name="three"><h1> 我是第三位置 </h1></slot>
+              <slot name="four"><h1> 我是第四位置 </h1></slot>
+              <slot name="five"><h1> 我是第五位置 </h1></slot>
+           </div>
+            `
+        })
+
+       new Vue({
+            el: "#app",
+        })
+    </script>
+
+</body>
+
+</html>
